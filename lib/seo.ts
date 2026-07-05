@@ -29,7 +29,7 @@ export function articleSchema(article: Article) {
     "@type": "Article",
     headline: article.title,
     description: article.description,
-    image: absoluteUrl(article.featuredImage),
+    image: absoluteUrl(article.image),
     datePublished: article.publishedDate,
     dateModified: article.updatedDate,
     author: {

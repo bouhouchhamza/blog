@@ -24,7 +24,7 @@ export type Article = {
   updatedDate: string;
   readingTime: string;
   tags: string[];
-  featuredImage: string;
+  image: string;
   imageAlt: string;
   sections: ArticleSection[];
   faq: FAQ[];
@@ -490,8 +490,8 @@ export const articles: Article[] = seeds.map((seed, index) => {
     updatedDate: `2026-03-${String((index % 25) + 1).padStart(2, "0")}`,
     readingTime: "9 min read",
     tags: [seed.category, "Beginner Guide", "Automation"],
-    featuredImage: `/images/${category}.svg`,
-    imageAlt: `${seed.category} guide illustration for ${seed.title}`,
+    image: `/images/articles/${seed.slug}.svg`,
+    imageAlt: `Original tech illustration for ${seed.title}, showing ${seed.example}.`,
     sections: articleSections(seed),
     faq: faqs(seed),
     related,

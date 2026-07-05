@@ -9,7 +9,7 @@ export function ArticleCard({ article, priority = false }: { article: Article; p
     <article className="flex h-full flex-col overflow-hidden rounded-lg border border-[#dce5e0] bg-white shadow-soft">
       <Link href={`/blog/${article.slug}`} aria-label={article.title}>
         <Image
-          src={article.featuredImage}
+          src={article.image}
           alt={article.imageAlt}
           width={1200}
           height={675}

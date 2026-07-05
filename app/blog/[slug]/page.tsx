@@ -11,7 +11,7 @@ import { TableOfContents } from "@/components/TableOfContents";
 import { articles, getArticle, getRelatedArticles, type Article } from "@/lib/articles";
 import { getCategory } from "@/lib/categories";
 import { articleSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
-import { formatDate } from "@/lib/utils";
+import { absoluteUrl, formatDate } from "@/lib/utils";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -35,13 +35,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "article",
       publishedTime: article.publishedDate,
       modifiedTime: article.updatedDate,
-      images: [{ url: article.featuredImage, alt: article.imageAlt }]
+      images: [{ url: absoluteUrl(article.image), alt: article.imageAlt }]
     },
     twitter: {
       card: "summary_large_image",
       title: article.seoTitle,
       description: article.metaDescription,
-      images: [article.featuredImage]
+      images: [absoluteUrl(article.image)]
     }
   };
 }
@@ -81,7 +81,7 @@ export default async function ArticlePage({ params }: Props) {
         </div>
       </header>
       <Image
-        src={article.featuredImage}
+        src={article.image}
         alt={article.imageAlt}
         width={1200}
         height={675}
